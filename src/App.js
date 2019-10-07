@@ -9,14 +9,21 @@ function App() {
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
 
+  function updateScore(team, by) {
+    const score =
+      team === 'home'
+        ? setHomeScore(homeScore + by)
+        : setAwayScore(awayScore + by);
+    return score;
+  }
+
   return (
     <div className='container'>
       <Scoreboard homeScore={homeScore} awayScore={awayScore} />
       <ScoreButtons
         homeScore={homeScore}
         awayScore={awayScore}
-        setHomeScore={setHomeScore}
-        setAwayScore={setAwayScore}
+        updateScore={updateScore}
       />
     </div>
   );
